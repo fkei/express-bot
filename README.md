@@ -17,6 +17,7 @@ app.use(require('express-bot')({
 }));
 ```
 
+> options (Optional)
 
 # Develop
 
