@@ -1,6 +1,10 @@
 # express-bot
 Crawler(robots) decision middleware for Express
 
+# UserAgent's
+
+[https://github.com/fkei/express-bot/blob/master/index.js#L9](https://github.com/fkei/express-bot/blob/master/index.js#L9)
+
 # Use
 
 ```javascript
@@ -12,6 +16,7 @@ app.use(require('express-bot')({
   }
 }));
 ```
+
 
 # Develop
 
