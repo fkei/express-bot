@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "quotes": [
+      2,
+      "single"
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ],
+    "no-underscore-dangle": 0
+  },
+  "env": {
+    "node": true
+  }
+}

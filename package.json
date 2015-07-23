@@ -1,0 +1,25 @@
+{
+  "name": "express-robots",
+  "version": "0.1.1",
+  "description": "Crawler(robots) decision middleware for Express",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fkei/express-robots.git"
+  },
+  "keywords": [
+    "robots",
+    "crawler",
+    "useragent",
+    "express"
+  ],
+  "author": "fkei <kei.topaz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fkei/express-robots/issues"
+  },
+  "homepage": "https://github.com/fkei/express-robots#readme",
+  "devDependencies": {
+    "eslint": "^0.24.1"
+  }
+}
