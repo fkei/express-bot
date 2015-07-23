@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fkei/express-robots.git"
+    "url": "git+https://github.com/fkei/express-bot.git"
   },
   "keywords": [
     "robots",
@@ -16,9 +16,9 @@
   "author": "fkei <kei.topaz@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fkei/express-robots/issues"
+    "url": "https://github.com/fkei/express-bot/issues"
   },
-  "homepage": "https://github.com/fkei/express-robots#readme",
+  "homepage": "https://github.com/fkei/express-bot#readme",
   "devDependencies": {
     "eslint": "^0.24.1"
   }

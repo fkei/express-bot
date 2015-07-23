@@ -95,7 +95,7 @@ var BOTS = [
  * @returns {Function}
  * @example
  *
- * app.use(require('express-robots')({
+ * app.use(require('express-bot')({
  *   querystring: { // dicision using querystring  https://localhost?bot=1 -> hit!!
  *     use: true,
  *     key: 'bot',
@@ -103,7 +103,7 @@ var BOTS = [
  *   }
  * }));
  */
-module.exports = function expressRobots(options) {
+module.exports = function expressBot(options) {
   options = options || {};
   options.querystring = options.querystring || {};
   options.querystring.use = options.querystring.use || false;
