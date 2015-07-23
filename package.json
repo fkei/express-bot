@@ -1,5 +1,5 @@
 {
-  "name": "express-robots",
+  "name": "express-bot",
   "version": "0.1.1",
   "description": "Crawler(robots) decision middleware for Express",
   "main": "index.js",
