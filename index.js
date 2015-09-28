@@ -22,6 +22,7 @@ var BOTS = [
   'Yahoo',
   'ia_archiver',
   'facebookexternalhit',
+  'facebookplatform',
   'baiduspider',
   'pingdom',
   'bingbot',
