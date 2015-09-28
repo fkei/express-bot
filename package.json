@@ -1,6 +1,6 @@
 {
   "name": "express-bot",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Crawler(robots) decision middleware for Express",
   "main": "index.js",
   "repository": {
