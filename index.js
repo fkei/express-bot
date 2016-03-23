@@ -87,7 +87,8 @@ var BOTS = [
   'ichiro',
   'webis',
   'LinkWalker',
-  'lwp-trivial'
+  'lwp-trivial',
+  'nanagogo-bot'
 ];
 
 /**
