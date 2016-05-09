@@ -88,7 +88,8 @@ var BOTS = [
   'webis',
   'LinkWalker',
   'lwp-trivial',
-  'nanagogo-bot'
+  'nanagogo-bot',
+  'GoogleCloudMonitoring-UptimeChecks'
 ];
 
 /**
