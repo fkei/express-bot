@@ -13,6 +13,7 @@ app.use(require('express-bot')({
     use: true,
     key: 'bot',
     value: '1',
+    locals: ...
   }
 }));
 ```
@@ -21,6 +22,14 @@ app.use(require('express-bot')({
 
 # Develop
 
+### eslint
+
 ```
-$ make
+$ npm run eslint
+```
+
+### test
+
+```
+$ npm test
 ```

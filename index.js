@@ -119,7 +119,9 @@ module.exports = function expressBot(options) {
 
   return function(req, res, next) {
 
-    if (options.querystring.use && req.query[options.querystring.key] && req.query[options.querystring.key] === options.querystring.value) {
+    if (options.querystring.use && req.query[options.querystring.key]
+      && req.query[options.querystring.key] === options.querystring.value
+    ) {
       res.locals[options.querystring.key] = options.querystring.locals;
       next();
       return;

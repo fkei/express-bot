@@ -1,11 +1,15 @@
 {
   "name": "express-bot",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Crawler(robots) decision middleware for Express",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fkei/express-bot.git"
+  },
+  "scripts": {
+    "test": "mocha test",
+    "eslint": "eslint index.js"
   },
   "keywords": [
     "robots",
@@ -20,6 +24,9 @@
   },
   "homepage": "https://github.com/fkei/express-bot#readme",
   "devDependencies": {
-    "eslint": "^0.24.1"
+    "chai": "^3.5.0",
+    "eslint": "^0.24.1",
+    "mocha": "^2.4.5",
+    "node-mocks-http": "^1.5.2"
   }
 }
