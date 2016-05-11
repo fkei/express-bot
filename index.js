@@ -89,7 +89,8 @@ var BOTS = [
   'LinkWalker',
   'lwp-trivial',
   'nanagogo-bot',
-  'GoogleCloudMonitoring-UptimeChecks'
+  'GoogleCloudMonitoring-UptimeChecks',
+  'Stackdriver_terminus_bot'
 ];
 
 /**
