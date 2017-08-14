@@ -1,6 +1,13 @@
 # express-bot
 Crawler(robots) decision middleware for Express
 
+
+# Install
+
+```
+$ npm install --save express-bot
+```
+
 # UserAgent's
 
 [https://github.com/fkei/express-bot/blob/master/index.js#L9](https://github.com/fkei/express-bot/blob/master/index.js#L9)
