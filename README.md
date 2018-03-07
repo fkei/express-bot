@@ -7,9 +7,7 @@
 
 [![NPM](https://nodei.co/npm/express-bot.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/express-bot/)
 
-
 Crawler(robots) decision middleware for Express
-
 
 # Install
 
@@ -19,13 +17,24 @@ $ npm install --save express-bot
 
 # UserAgent's
 
-[https://github.com/fkei/express-bot/blob/master/index.js#L9](https://github.com/fkei/express-bot/blob/master/index.js#L9)
+- `Twitterbot`
+- `Google Keyword Suggestion`
+- `AdsBot-Google`
+- `Googlebot`
+- `applebot`
+- `curl`
+- `PycURL`
+- ....
+
+
+> ALL Bots List -> [https://github.com/fkei/express-bot/blob/master/index.js#L9](https://github.com/fkei/express-bot/blob/master/index.js#L9)
 
 # Use
 
 ```javascript
 app.use(require('express-bot')({
-  querystring: { // dicision using querystring  https://localhost?bot=1 -> hit!!
+  // force dicision using querystring  https://localhost?bot=1 -> hit!!
+  querystring: {
     use: true,
     key: 'bot',
     value: '1',

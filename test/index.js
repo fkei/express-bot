@@ -50,13 +50,13 @@ describe('Middleware test', function(){
       var fn = middleware({
         querystring: {
           use: true,
-          key: "test",
-          value: "yes",
-          locals: "data"
+          key: 'test',
+          value: 'yes',
+          locals: 'data'
         }
       });
       request.headers['user-agent'] = 'no-bot';
-      request.query.test = "yes";
+      request.query.test = 'yes';
 
       fn(request, response, function() {
         assert.equal(!!response.locals.test, true);
@@ -109,13 +109,13 @@ describe('Middleware test', function(){
       var fn = middleware({
         querystring: {
           use: true,
-          key: "test",
-          value: "yes",
-          locals: "data"
+          key: 'test',
+          value: 'yes',
+          locals: 'data'
         }
       });
       request.headers['user-agent'] = 'no-bot';
-      request.query.test = "no";
+      request.query.test = 'no';
 
       fn(request, response, function() {
         assert.equal(!!response.locals.test, false);
