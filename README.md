@@ -9,15 +9,6 @@
 [![NPM](https://nodei.co/npm/express-bot.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/express-bot/)
 
 
-
-<a href="https://npmjs.org/package/express-bot">
-  <img src="https://img.shields.io/npm/v/express-bot.svg?style=flat-squar" alt="NPM" />
-</a>
-<a href="https://github.com/fkei/express-bot/releases">
-  <img src="https://img.shields.io/github/release/fkei/express-bot.svg" alt="Latest Version" />
-</a>
-
-
 Crawler(robots) decision middleware for Express
 
 
