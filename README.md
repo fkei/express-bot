@@ -1,14 +1,15 @@
 # express-bot
 
-<a href="LICENSE">
-  <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="Software License" />
-</a>
-<a href="https://github.com/fkei/express-bot/issues">
-  <img src="https://img.shields.io/github/issues/fkei/express-bot.svg" alt="Issues" />
-</a>
-<a href="http://standardjs.com/">
-  <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="JavaScript Style Guide" />
-</a>
+[![GitHub license](https://img.shields.io/github/license/fkei/express-bot.svg)](https://github.com/fkei/express-bot/blob/master/LICENSE)
+
+[![GitHub release](https://img.shields.io/github/release/fkei/express-bot.svg)]()
+[![GitHub last commit](https://img.shields.io/github/last-commit/fkei/riexpress-bototx.svg)]()
+![Travis CI](https://img.shields.io/travis/fkei/express-bot/master.svg)
+
+[![NPM](https://nodei.co/npm/express-bot.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/express-bot/)
+
+
+
 <a href="https://npmjs.org/package/express-bot">
   <img src="https://img.shields.io/npm/v/express-bot.svg?style=flat-squar" alt="NPM" />
 </a>
