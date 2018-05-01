@@ -39,7 +39,11 @@ app.use(require('express-bot')({
     key: 'bot',
     value: '1',
     locals: ...
-  }
+  // list of UA strings to be added to pre-defined BOTS.
+  },
+  additionalBots: [
+    'MinorBot'
+  ]
 }));
 ```
 
