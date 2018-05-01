@@ -104,7 +104,10 @@ var BOTS = [
  *     use: true,
  *     key: 'bot',
  *     value: '1',
- *   }
+ *   },
+ *   additionalBots: [ // list of UA strings to be added to pre-defined BOTS.
+ *     'facebookexternalhit'
+ *   ]
  * }));
  */
 module.exports = function expressBot(options) {
@@ -114,6 +117,10 @@ module.exports = function expressBot(options) {
   options.querystring.key = options.querystring.key || 'bot';
   options.querystring.value = options.querystring.value || '1';
   options.querystring.locals = options.querystring.locals || ['querystring', options.querystring.key, options.querystring.value];
+
+  if (Array.isArray(options.additionalBots)) {
+    BOTS = BOTS.concat(options.additionalBots);
+  }
 
   var BOT_REGEXP = new RegExp('^.*(' + BOTS.join('|') + ').*$', 'i');
 
@@ -136,4 +143,3 @@ module.exports = function expressBot(options) {
     next();
   };
 };
-
