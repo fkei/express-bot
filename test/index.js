@@ -65,6 +65,17 @@ describe('Middleware test', function(){
       });
     });
 
+    it('options.additionalBots', function(done) {
+      var fn = middleware({
+        additionalBots: ['MinorBot']
+      });
+      request.headers['user-agent'] = 'MinorBot';
+      fn(request, response, function() {
+        assert.equal(!!response.locals.bot, true);
+        done();
+      });
+    });
+
   });
 
 
@@ -120,6 +131,17 @@ describe('Middleware test', function(){
       fn(request, response, function() {
         assert.equal(!!response.locals.test, false);
         assert.equal(response.locals.test, null);
+        done();
+      });
+    });
+
+    it('options.additionalBots', function(done) {
+      var fn = middleware({
+        additionalBots: ['MinorBot']
+      });
+      request.headers['user-agent'] = 'no-bot';
+      fn(request, response, function() {
+        assert.equal(!!response.locals.bot, false);
         done();
       });
     });
