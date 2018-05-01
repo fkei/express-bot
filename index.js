@@ -106,7 +106,7 @@ var BOTS = [
  *     value: '1',
  *   },
  *   additionalBots: [ // list of UA strings to be added to pre-defined BOTS.
- *     'facebookexternalhit'
+ *     'MinorBot'
  *   ]
  * }));
  */
