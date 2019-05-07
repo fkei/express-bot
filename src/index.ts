@@ -1,12 +1,9 @@
-'use strict';
+import { NextFunction, Request, Response } from 'express';
 
 /**
  * @author fkei <kei.topaz@gmail.com>
- * @name index.js <index.js>
- * @fileOverview Crawler(robots) decision middleware for Express
  */
-
-var BOTS = [
+const BOTS = [
   'Twitterbot',
   'Google Keyword Suggestion',
   'AdsBot-Google',
@@ -14,7 +11,7 @@ var BOTS = [
   'applebot',
   'curl',
   'PycURL',
-  //'Bot',
+  // 'Bot',
   'B-O-T',
   'Crawler',
   'Spider',
@@ -93,9 +90,32 @@ var BOTS = [
   'Stackdriver_terminus_bot'
 ];
 
+interface QueryString {
+  use: boolean;
+  key: string;
+  value: string;
+  locals: object | string;
+}
+
+interface Options {
+  querystring: Partial<QueryString>;
+}
+
+const defaultQueryString: QueryString = {
+  use: true,
+  // tslint:disable-next-line: object-literal-sort-keys
+  key: 'bot',
+  value: '1',
+  locals: {},
+}
+
+const defaultOptions: Options = {
+  querystring: {}
+}
+
 /**
  * Express middleware
- * @param options
+ * @param options Partial<Options>
  * @returns {Function}
  * @example
  *
@@ -104,36 +124,32 @@ var BOTS = [
  *     use: true,
  *     key: 'bot',
  *     value: '1',
+ *     locals: {}
  *   }
  * }));
  */
-module.exports = function expressBot(options) {
-  options = options || {};
-  options.querystring = options.querystring || {};
-  options.querystring.use = options.querystring.use || false;
-  options.querystring.key = options.querystring.key || 'bot';
-  options.querystring.value = options.querystring.value || '1';
-  options.querystring.locals = options.querystring.locals || ['querystring', options.querystring.key, options.querystring.value];
 
-  var BOT_REGEXP = new RegExp('^.*(' + BOTS.join('|') + ').*$', 'i');
+const expressBot = (options: Partial<Options> = {}) => {
+  const opts = { ...defaultOptions, ...options }
+  const querystring = { ...defaultQueryString, ...opts.querystring }
 
-  return function(req, res, next) {
+  const BOT_REGEXP = new RegExp('^.*(' + BOTS.join('|') + ').*$', 'i');
 
-    if (options.querystring.use && req.query[options.querystring.key]
-      && req.query[options.querystring.key] === options.querystring.value
-    ) {
-      res.locals[options.querystring.key] = options.querystring.locals;
+  return (req: Request, res: Response, next: NextFunction) => {
+    if (querystring.use && req.query[querystring.key] && req.query[querystring.key] === querystring.value) {
+      res.locals[querystring.key] = querystring.locals;
       next();
       return;
     }
 
-    var ua = req.headers['user-agent'] || '';
-    var decision = ua.match(BOT_REGEXP);
+    const ua = req.headers['user-agent'] || '';
+    const decision = ua.match(BOT_REGEXP);
 
     if (decision) {
-      res.locals[options.querystring.key] = decision;
+      res.locals[querystring.key] = decision;
     }
     next();
   };
 };
 
+export default expressBot;
