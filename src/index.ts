@@ -87,7 +87,7 @@ const BOTS = [
   'lwp-trivial',
   'nanagogo-bot',
   'GoogleCloudMonitoring-UptimeChecks',
-  'Stackdriver_terminus_bot'
+  'Stackdriver_terminus_bot',
 ];
 
 interface QueryString {
@@ -107,11 +107,11 @@ const defaultQueryString: QueryString = {
   key: 'bot',
   value: '1',
   locals: {},
-}
+};
 
 const defaultOptions: Options = {
-  querystring: {}
-}
+  querystring: {},
+};
 
 /**
  * Express middleware
@@ -130,8 +130,8 @@ const defaultOptions: Options = {
  */
 
 const expressBot = (options: Partial<Options> = {}) => {
-  const opts = { ...defaultOptions, ...options }
-  const querystring = { ...defaultQueryString, ...opts.querystring }
+  const opts = { ...defaultOptions, ...options };
+  const querystring = { ...defaultQueryString, ...opts.querystring };
 
   const BOT_REGEXP = new RegExp('^.*(' + BOTS.join('|') + ').*$', 'i');
 

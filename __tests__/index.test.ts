@@ -11,8 +11,8 @@ describe('Middleware', () => {
         method: 'GET',
         url: '/bot',
         query: {
-          myid: '312'
-        }
+          myid: '312',
+        },
       });
       response = httpMocks.createResponse();
       response.locals = {};
@@ -31,8 +31,8 @@ describe('Middleware', () => {
     it('Set arguments(options)', done => {
       var fn = expressBot({
         querystring: {
-          use: true
-        }
+          use: true,
+        },
       });
       request.headers['user-agent'] = 'Googlebot';
       fn(request, response, () => {
@@ -48,9 +48,9 @@ describe('Middleware', () => {
           key: 'test',
           value: 'yes',
           locals: {
-            hello: 'hello :P'
-          }
-        }
+            hello: 'hello :P',
+          },
+        },
       });
       request.headers['user-agent'] = 'no-bot';
       request.query.test = 'yes';
@@ -67,8 +67,8 @@ describe('Middleware', () => {
           use: true,
           key: 'test',
           value: 'yes',
-          locals: 'hello :P'
-        }
+          locals: 'hello :P',
+        },
       });
       request.headers['user-agent'] = 'no-bot';
       request.query.test = 'yes';
@@ -81,7 +81,6 @@ describe('Middleware', () => {
   });
 
   describe('Non-bot access', () => {
-
     let request: any;
     let response: any;
 
@@ -90,8 +89,8 @@ describe('Middleware', () => {
         method: 'GET',
         url: '/bot',
         query: {
-          myid: '312'
-        }
+          myid: '312',
+        },
       });
       response = httpMocks.createResponse();
       response.locals = {};
@@ -110,8 +109,8 @@ describe('Middleware', () => {
     it('Set arguments(options)', done => {
       var fn = expressBot({
         querystring: {
-          use: true
-        }
+          use: true,
+        },
       });
       request.headers['user-agent'] = 'no-bot';
       fn(request, response, () => {
@@ -126,8 +125,8 @@ describe('Middleware', () => {
           use: true,
           key: 'test',
           value: 'yes',
-          locals: 'data'
-        }
+          locals: 'data',
+        },
       });
       request.headers['user-agent'] = 'no-bot';
       request.query.test = 'no';

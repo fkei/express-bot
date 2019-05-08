@@ -2,17 +2,11 @@
   "name": "express-bot",
   "version": "0.4.1",
   "description": "Crawler(robots) decision middleware for Express",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fkei/express-bot.git"
-  },
-  "scripts": {
-    "test": "jest",
-    "test-debug": "jest --watch",
-    "lint": "tslint 'src/**/*.ts'",
-    "lint-check": "tslint-config-prettier-check ./tslint.json"
-  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
   "keywords": [
     "typescript",
     "robots",
@@ -26,14 +20,28 @@
     "url": "https://github.com/fkei/express-bot/issues"
   },
   "homepage": "https://github.com/fkei/express-bot#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fkei/express-bot.git"
+  },
+  "scripts": {
+    "build": "npm run format && npm run lint && npm run test && tsc",
+    "test": "jest --config jest.config.js",
+    "test-debug": "jest  --config jest.config.js--watch",
+    "lint": "tslint -p tsconfig.json",
+    "lint-check": "tslint-config-prettier-check ./tslint.json",
+    "format": "prettier --write \"src/**/*.ts\" \"__tests__/**/*.test.ts\"",
+    "prepare": "npm run build"
+  },
   "devDependencies": {
     "@types/express": "^4.16.1",
-    "@types/node": "^11.13.0",
     "@types/jest": "^24.0.12",
+    "@types/node": "^11.13.0",
     "jest": "^24.8.0",
     "node-mocks-http": "^1.5.2",
+    "prettier": "^1.17.0",
     "ts-jest": "^24.0.2",
-    "tslint": "^5.15.0",
+    "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.1"
   },
