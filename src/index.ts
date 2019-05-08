@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 /**
  * @author fkei <kei.topaz@gmail.com>
  */
-const BOTS = [
+let BOTS: string[] = [
   'Twitterbot',
   'Google Keyword Suggestion',
   'AdsBot-Google',
@@ -99,6 +99,7 @@ interface QueryString {
 
 interface Options {
   querystring: Partial<QueryString>;
+  additionalBots: Partial<string[]>;
 }
 
 const defaultQueryString: QueryString = {
@@ -111,7 +112,10 @@ const defaultQueryString: QueryString = {
 
 const defaultOptions: Options = {
   querystring: {},
+  additionalBots: [],
 };
+
+const defaultAdditionalBots: Partial<string[]> = [];
 
 /**
  * Express middleware
@@ -124,16 +128,23 @@ const defaultOptions: Options = {
  *     use: true,
  *     key: 'bot',
  *     value: '1',
- *     locals: {}
- *   }
+ *   },
+ *   additionalBots: [ // list of UA strings to be added to pre-defined BOTS.
+ *     'MinorBot'
+ *   ]
  * }));
  */
-
 const expressBot = (options: Partial<Options> = {}) => {
   const opts = { ...defaultOptions, ...options };
   const querystring = { ...defaultQueryString, ...opts.querystring };
+  const additionalBots = [ ...defaultAdditionalBots, ...opts.additionalBots ];
 
-  const BOT_REGEXP = new RegExp('^.*(' + BOTS.join('|') + ').*$', 'i');
+  let bots = BOTS;
+  if (0 < additionalBots.length) {
+    bots = Array.prototype.concat(bots, additionalBots);
+  }
+
+  const botRegExp = new RegExp('^.*(' + bots.join('|') + ').*$', 'i');
 
   return (req: Request, res: Response, next: NextFunction) => {
     if (querystring.use && req.query[querystring.key] && req.query[querystring.key] === querystring.value) {
@@ -143,7 +154,7 @@ const expressBot = (options: Partial<Options> = {}) => {
     }
 
     const ua = req.headers['user-agent'] || '';
-    const decision = ua.match(BOT_REGEXP);
+    const decision = ua.match(botRegExp);
 
     if (decision) {
       res.locals[querystring.key] = decision;
