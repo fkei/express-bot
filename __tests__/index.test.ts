@@ -1,5 +1,5 @@
-import expressBot from '../src';
 import httpMocks from 'node-mocks-http';
+import expressBot from '../src';
 
 describe('Middleware', () => {
   describe('Bot access', () => {
@@ -10,6 +10,7 @@ describe('Middleware', () => {
       request = httpMocks.createRequest({
         method: 'GET',
         url: '/bot',
+        // tslint:disable-next-line: object-literal-sort-keys
         query: {
           myid: '312',
         },
@@ -20,7 +21,7 @@ describe('Middleware', () => {
     });
 
     it('Argument(options) not set', done => {
-      var fn = expressBot();
+      const fn = expressBot();
       request.headers['user-agent'] = 'Googlebot';
       fn(request, response, () => {
         expect(response.locals.bot).toBeTruthy();
@@ -29,7 +30,7 @@ describe('Middleware', () => {
     });
 
     it('Set arguments(options)', done => {
-      var fn = expressBot({
+      const fn = expressBot({
         querystring: {
           use: true,
         },
@@ -42,9 +43,10 @@ describe('Middleware', () => {
     });
 
     it('Set arguments and define `locals` variables (object)', done => {
-      var fn = expressBot({
+      const fn = expressBot({
         querystring: {
           use: true,
+          // tslint:disable-next-line: object-literal-sort-keys
           key: 'test',
           value: 'yes',
           locals: {
@@ -62,9 +64,10 @@ describe('Middleware', () => {
     });
 
     it('Set arguments and define `locals` variables (string)', done => {
-      var fn = expressBot({
+      const fn = expressBot({
         querystring: {
           use: true,
+          // tslint:disable-next-line: object-literal-sort-keys
           key: 'test',
           value: 'yes',
           locals: 'hello :P',
@@ -78,6 +81,17 @@ describe('Middleware', () => {
         done();
       });
     });
+
+    it('Add bot definition (additionalBots)', done => {
+      const fn = expressBot({
+        additionalBots: ['MinorBot'],
+      });
+      request.headers['user-agent'] = 'MinorBot';
+      fn(request, response, () => {
+        expect(response.locals.bot).toBeTruthy();
+        done();
+      });
+    });
   });
 
   describe('Non-bot access', () => {
@@ -88,6 +102,7 @@ describe('Middleware', () => {
       request = httpMocks.createRequest({
         method: 'GET',
         url: '/bot',
+        // tslint:disable-next-line: object-literal-sort-keys
         query: {
           myid: '312',
         },
@@ -98,7 +113,7 @@ describe('Middleware', () => {
     });
 
     it('Argument(options) not set', done => {
-      var fn = expressBot({});
+      const fn = expressBot({});
       request.headers['user-agent'] = 'no-bot';
       fn(request, response, () => {
         expect(response.locals.bot).toBeFalsy();
@@ -107,7 +122,7 @@ describe('Middleware', () => {
     });
 
     it('Set arguments(options)', done => {
-      var fn = expressBot({
+      const fn = expressBot({
         querystring: {
           use: true,
         },
@@ -120,9 +135,10 @@ describe('Middleware', () => {
     });
 
     it('Set arguments and define `locals` variables (string)', done => {
-      var fn = expressBot({
+      const fn = expressBot({
         querystring: {
           use: true,
+          // tslint:disable-next-line: object-literal-sort-keys
           key: 'test',
           value: 'yes',
           locals: 'data',
@@ -137,5 +153,18 @@ describe('Middleware', () => {
         done();
       });
     });
+
+    it('Add bot definition (additionalBots)', done => {
+      const fn = expressBot({
+        additionalBots: ['MinorBot'],
+      });
+      request.headers['user-agent'] = 'no-bot';
+      fn(request, response, () => {
+        expect(response.locals.bot).toBeFalsy();
+        done();
+      });
+    });
+
+    ///
   });
 });
