@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 /**
  * @author fkei <kei.topaz@gmail.com>
  */
-let BOTS: string[] = [
+const BOTS: string[] = [
   'Twitterbot',
   'Google Keyword Suggestion',
   'AdsBot-Google',
@@ -111,8 +111,8 @@ const defaultQueryString: QueryString = {
 };
 
 const defaultOptions: Options = {
-  querystring: {},
   additionalBots: [],
+  querystring: {},
 };
 
 const defaultAdditionalBots: Partial<string[]> = [];
@@ -137,7 +137,7 @@ const defaultAdditionalBots: Partial<string[]> = [];
 const expressBot = (options: Partial<Options> = {}) => {
   const opts = { ...defaultOptions, ...options };
   const querystring = { ...defaultQueryString, ...opts.querystring };
-  const additionalBots = [ ...defaultAdditionalBots, ...opts.additionalBots ];
+  const additionalBots = [...defaultAdditionalBots, ...opts.additionalBots];
 
   let bots = BOTS;
   if (0 < additionalBots.length) {
