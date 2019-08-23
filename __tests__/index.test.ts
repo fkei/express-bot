@@ -121,6 +121,19 @@ describe('Middleware', () => {
       });
     });
 
+    it('Set arguments(options) Y!J-RIE', done => {
+      const fn = expressBot({
+        querystring: {
+          use: true,
+        },
+      });
+      request.headers['user-agent'] = 'Y!J-RIE';
+      fn(request, response, () => {
+        expect(response.locals.bot).toBeFalsy();
+        done();
+      });
+    });
+
     it('Set arguments(options)', done => {
       const fn = expressBot({
         querystring: {

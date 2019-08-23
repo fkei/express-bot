@@ -7,7 +7,7 @@
 
 [![NPM](https://nodei.co/npm/express-bot.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/express-bot/)
 
-Crawler(robots) decision middleware for Express
+Crawler(robots) decision middleware for Express (TypeScript)
 
 # Install
 
