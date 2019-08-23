@@ -16,7 +16,7 @@ const BOTS: string[] = [
   'Crawler',
   'Spider',
   'Spyder',
-  'Yahoo',
+  'Y!J-I',
   'ia_archiver',
   'facebookexternalhit',
   'facebookplatform',
