@@ -29,6 +29,15 @@ describe('Middleware', () => {
       });
     });
 
+    it('Yahoo UA', done => {
+      const fn = expressBot();
+      request.headers['user-agent'] = 'Y!J-VSC/ViSe';
+      fn(request, response, () => {
+        expect(response.locals.bot).toBeTruthy();
+        done();
+      });
+    });
+
     it('Set arguments(options)', done => {
       const fn = expressBot({
         querystring: {
@@ -115,19 +124,6 @@ describe('Middleware', () => {
     it('Argument(options) not set', done => {
       const fn = expressBot({});
       request.headers['user-agent'] = 'no-bot';
-      fn(request, response, () => {
-        expect(response.locals.bot).toBeFalsy();
-        done();
-      });
-    });
-
-    it('Set arguments(options) Y!J-RIE', done => {
-      const fn = expressBot({
-        querystring: {
-          use: true,
-        },
-      });
-      request.headers['user-agent'] = 'Y!J-RIE';
       fn(request, response, () => {
         expect(response.locals.bot).toBeFalsy();
         done();
