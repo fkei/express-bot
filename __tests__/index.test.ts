@@ -6,7 +6,7 @@ describe('Middleware', () => {
     let request: any;
     let response: any;
 
-    beforeEach(done => {
+    beforeEach((done) => {
       request = httpMocks.createRequest({
         method: 'GET',
         url: '/bot',
@@ -20,7 +20,7 @@ describe('Middleware', () => {
       done();
     });
 
-    it('Argument(options) not set', done => {
+    it('Argument(options) not set', (done) => {
       const fn = expressBot();
       request.headers['user-agent'] = 'Googlebot';
       fn(request, response, () => {
@@ -29,7 +29,7 @@ describe('Middleware', () => {
       });
     });
 
-    it('Yahoo UA', done => {
+    it('Yahoo UA', (done) => {
       const fn = expressBot();
       request.headers['user-agent'] = 'Y!J-VSC/ViSe';
       fn(request, response, () => {
@@ -38,7 +38,7 @@ describe('Middleware', () => {
       });
     });
 
-    it('Slider.com Crawler UA', done => {
+    it('Slider.com Crawler UA', (done) => {
       const fn = expressBot();
       request.headers['user-agent'] = 'Silk/1.0 (+https://www.slider.com/silk.htm)';
       fn(request, response, () => {
@@ -47,7 +47,7 @@ describe('Middleware', () => {
       });
     });
 
-    it('Set arguments(options)', done => {
+    it('Set arguments(options)', (done) => {
       const fn = expressBot({
         querystring: {
           use: true,
@@ -60,7 +60,7 @@ describe('Middleware', () => {
       });
     });
 
-    it('Set arguments and define `locals` variables (object)', done => {
+    it('Set arguments and define `locals` variables (object)', (done) => {
       const fn = expressBot({
         querystring: {
           use: true,
@@ -81,7 +81,7 @@ describe('Middleware', () => {
       });
     });
 
-    it('Set arguments and define `locals` variables (string)', done => {
+    it('Set arguments and define `locals` variables (string)', (done) => {
       const fn = expressBot({
         querystring: {
           use: true,
@@ -100,7 +100,7 @@ describe('Middleware', () => {
       });
     });
 
-    it('Add bot definition (additionalBots)', done => {
+    it('Add bot definition (additionalBots)', (done) => {
       const fn = expressBot({
         additionalBots: ['MinorBot'],
       });
@@ -116,7 +116,7 @@ describe('Middleware', () => {
     let request: any;
     let response: any;
 
-    beforeEach(done => {
+    beforeEach((done) => {
       request = httpMocks.createRequest({
         method: 'GET',
         url: '/bot',
@@ -130,7 +130,7 @@ describe('Middleware', () => {
       done();
     });
 
-    it('Argument(options) not set', done => {
+    it('Argument(options) not set', (done) => {
       const fn = expressBot({});
       request.headers['user-agent'] = 'no-bot';
       fn(request, response, () => {
@@ -139,7 +139,7 @@ describe('Middleware', () => {
       });
     });
 
-    it('Set arguments(options)', done => {
+    it('Set arguments(options)', (done) => {
       const fn = expressBot({
         querystring: {
           use: true,
@@ -152,7 +152,7 @@ describe('Middleware', () => {
       });
     });
 
-    it('Set arguments and define `locals` variables (string)', done => {
+    it('Set arguments and define `locals` variables (string)', (done) => {
       const fn = expressBot({
         querystring: {
           use: true,
@@ -172,7 +172,7 @@ describe('Middleware', () => {
       });
     });
 
-    it('Add bot definition (additionalBots)', done => {
+    it('Add bot definition (additionalBots)', (done) => {
       const fn = expressBot({
         additionalBots: ['MinorBot'],
       });
@@ -183,9 +183,10 @@ describe('Middleware', () => {
       });
     });
 
-    it('Fire-Tablet (Silk Browser) UA', done => {
+    it('Fire-Tablet (Silk Browser) UA', (done) => {
       const fn = expressBot({});
-      request.headers['user-agent'] = 'Mozilla/5.0 (Linux; Android 9; KFMAWI) AppleWebKit/537.36 (KHTML, like Gecko) Silk/90.3.1 like Chrome/90.0.4430.210 Safari/537.36';
+      request.headers['user-agent'] =
+        'Mozilla/5.0 (Linux; Android 9; KFMAWI) AppleWebKit/537.36 (KHTML, like Gecko) Silk/90.3.1 like Chrome/90.0.4430.210 Safari/537.36';
       fn(request, response, () => {
         expect(response.locals.bot).toBeFalsy();
         done();
