@@ -38,6 +38,15 @@ describe('Middleware', () => {
       });
     });
 
+    it('Slider.com Crawler UA', done => {
+      const fn = expressBot();
+      request.headers['user-agent'] = 'Silk/1.0 (+https://www.slider.com/silk.htm)';
+      fn(request, response, () => {
+        expect(response.locals.bot).toBeTruthy();
+        done();
+      });
+    });
+
     it('Set arguments(options)', done => {
       const fn = expressBot({
         querystring: {
@@ -168,6 +177,15 @@ describe('Middleware', () => {
         additionalBots: ['MinorBot'],
       });
       request.headers['user-agent'] = 'no-bot';
+      fn(request, response, () => {
+        expect(response.locals.bot).toBeFalsy();
+        done();
+      });
+    });
+
+    it('Fire-Tablet (Silk Browser) UA', done => {
+      const fn = expressBot({});
+      request.headers['user-agent'] = 'Mozilla/5.0 (Linux; Android 9; KFMAWI) AppleWebKit/537.36 (KHTML, like Gecko) Silk/90.3.1 like Chrome/90.0.4430.210 Safari/537.36';
       fn(request, response, () => {
         expect(response.locals.bot).toBeFalsy();
         done();

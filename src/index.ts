@@ -70,7 +70,7 @@ const BOTS: string[] = [
   'truwoGPS',
   'StackRambler',
   'Sqworm',
-  'silk',
+  'silk\\.htm',
   'semanticdiscovery',
   'ScoutJet',
   'Nymesis',
