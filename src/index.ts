@@ -88,6 +88,7 @@ const BOTS: string[] = [
   'nanagogo-bot',
   'GoogleCloudMonitoring-UptimeChecks',
   'Stackdriver_terminus_bot',
+  'WhatsApp'
 ];
 
 interface QueryString {
